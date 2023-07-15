@@ -8,14 +8,22 @@ from steamcmd import SteamCMD
 log = logger.default.log
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--steam-user', type=str, default='anonymous')
-parser.add_argument('--steam-pass', type=str, default='')
-parser.add_argument('--path', type=str, default='C:\\Games\\Arma3\\A3Master')
-parser.add_argument('--steamcmd', type=str, default='C:\\steamcmd\\steamcmd.exe')
-parser.add_argument('--branch', type=str, nargs='+', default=[])  # e.g. '233780 -beta'
-parser.add_argument('--appid', type=int, default=107410)          # Arma3 appid
-parser.add_argument('--mods', type=int, nargs='+', default=[])    # e.g. 894678801
-parser.add_argument('--modlist', type=argparse.FileType('r'), nargs='+', default=[]) # e.g. 'A3Preset.html'
+parser.add_argument('--steam-user', type=str, default='anonymous',
+                    help='steam account username')
+parser.add_argument('--steam-pass', type=str, default='',
+                    help='steam account password')
+parser.add_argument('--path', type=str, default='C:\\Games\\Arma3\\A3Master',
+                    help='Arma3 server path, the folder must already exist')
+parser.add_argument('--steamcmd', type=str, default='C:\\steamcmd\\steamcmd.exe',
+                    help='path to steamcmd.exe ')
+parser.add_argument('--branch', type=str, nargs='+', default=[],  # e.g. '233780 -beta'
+                    help='Arma3 branch to install')
+parser.add_argument('--appid', type=int, default=107410,          # Arma3 appid
+                    help='Arma3 steam App ID')
+parser.add_argument('--mods', type=int, nargs='+', default=[],    # e.g. 894678801
+                    help='Workshop items id')
+parser.add_argument('--modlist', type=argparse.FileType('r'), nargs='+', default=[], # e.g. 'A3Preset.html'
+                    help='Arma3 preset file (.html)')
 args = parser.parse_args()
 
 log(f'-----{"Arma3ServerHelper":^50}-----')
