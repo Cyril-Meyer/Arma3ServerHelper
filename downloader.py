@@ -63,24 +63,36 @@ if not args.no_pause:
 log(f'-----{"Download Server":^50}-----')
 
 for branch in args.branch:
-    log(f'{"---> branch":16}{branch}')
-    log(f'{"<---":16}{cmd.app_update(branch)}')
+    log(f'{"---> add app":16}{branch}')
+    cmd.app_update(branch)
 
+log(f'{"--->":16}download with steamcmd')
+log(f'{"<---":16}{cmd.run()}')
 
-log(f'-----{"Download Mod":^50}-----')
+log(f'-----{"Download Mods":^50}-----')
 
 for mod_id in args.mods:
-    log(f'{"-> mods":16}{mod_id}')
-    log(f'{"<---":16}{cmd.workshop_download_item(str(args.appid), mod_id)}')
-    log(f'{"-> linking":16}{mod_id}')
+    log(f'{"---> add mod":16}{mod_id}')
+    cmd.workshop_download_item(str(args.appid), mod_id)
+
+log(f'{"--->":16}download with steamcmd')
+log(f'{"<---":16}{cmd.run()}')
+
+for mod_id in args.mods:
+    log(f'{"---> linking":16}{mod_id}')
     log(f'{"<---":16}{utils.symlink.link(args.path, str(args.appid), mod_id)}')
 
 
 for mod_list_file in args.modlist:
     log(f'{"-> modlist":16}{mod_list_file.name}')
     for mod_id in utils.modlist.parse(mod_list_file):
-        log(f'{"-> mods":16}{mod_id}')
-        log(f'{"<---":16}{cmd.workshop_download_item(str(args.appid), mod_id)}')
+        log(f'{"---> add mod":16}{mod_id}')
+        cmd.workshop_download_item(str(args.appid), mod_id)
+
+        log(f'{"--->":16}download with steamcmd')
+        log(f'{"<---":16}{cmd.run()}')
+
+    for mod_id in utils.modlist.parse(mod_list_file):
         log(f'{"-> linking":16}{mod_id}')
         log(f'{"<---":16}{utils.symlink.link(args.path, str(args.appid), mod_id)}')
 
