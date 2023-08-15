@@ -27,6 +27,8 @@ parser.add_argument('--mods', type=int, nargs='+', default=[],    # e.g. 8946788
                     help='Workshop items id')
 parser.add_argument('--modlist', type=argparse.FileType('r'), nargs='+', default=[], # e.g. 'A3Preset.html'
                     help='Arma3 preset file (.html)')
+parser.add_argument('--no-pause', type=bool, default=False,
+                    help=argparse.SUPPRESS)
 args = parser.parse_args()
 
 log(f'-----{"Arma3ServerHelper":^50}-----')
@@ -54,7 +56,8 @@ for mod_list_file in args.modlist:
 
 cmd = SteamCMD(args.steamcmd, args.steam_user, args.steam_pass, args.path)
 
-input(f'---  {"Press Enter to continue...":^50}  ---')
+if not args.no_pause:
+    input(f'---  {"Press Enter to continue...":^50}  ---')
 
 
 log(f'-----{"Download Server":^50}-----')
@@ -83,4 +86,5 @@ for mod_list_file in args.modlist:
 
 
 log(f'-----{"Process completed":^50}-----')
-input(f'---  {"Press Enter to continue...":^50}  ---')
+if not args.no_pause:
+    input(f'---  {"Press Enter to continue...":^50}  ---')
