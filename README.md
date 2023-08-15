@@ -9,12 +9,12 @@ contact me if you have any needs, even very specific ones.
 ## Minimal Example
 ```
 python downloader.py
+--steam-user="username"
+--steam-pass="password"
 --path C:\Games\Arma3
 --steamcmd C:\steamcmd\steamcmd.exe
 --branch "233780 -beta creatordlc"
 --modlist A3Preset.html
---steam-user="username"
---steam-pass="password"
 ```
 
 ```
