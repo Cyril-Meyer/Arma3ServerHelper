@@ -38,7 +38,7 @@ if not os.path.isdir(args.path):
     if args.path_mkdir:
         os.makedirs(args.path)
     else:
-        log("ERROR: arma3 folder not found")
+        log("ERROR: arma3 folder not found, the folder must already exist")
         raise FileNotFoundError
 
 log(f'{"> steam user":16}{args.steam_user}')
