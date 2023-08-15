@@ -1,11 +1,11 @@
 import os
 import argparse
 
-import logger
-import modlist
+import utils.logger
+import utils.modlist
 from steamcmd import SteamCMD
 
-log = logger.default.log
+log = utils.logger.default.log
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--steam-user', type=str, default='anonymous',
@@ -13,9 +13,11 @@ parser.add_argument('--steam-user', type=str, default='anonymous',
 parser.add_argument('--steam-pass', type=str, default='',
                     help='steam account password')
 parser.add_argument('--path', type=str, default='C:\\Games\\Arma3\\A3Master',
-                    help='Arma3 server path, the folder must already exist')
+                    help='Arma3 server path')
+parser.add_argument('--path-mkdir', type=bool, default=False,
+                    help=argparse.SUPPRESS)
 parser.add_argument('--steamcmd', type=str, default='C:\\steamcmd\\steamcmd.exe',
-                    help='path to steamcmd.exe ')
+                    help='path to steamcmd.exe')
 parser.add_argument('--branch', type=str, nargs='+', default=[],  # e.g. '233780 -beta'
                     help='Arma3 branch to install')
 parser.add_argument('--appid', type=int, default=107410,          # Arma3 appid
@@ -32,8 +34,11 @@ if not os.path.isfile(args.steamcmd):
     log("ERROR: steamcmd not found")
     raise FileNotFoundError
 if not os.path.isdir(args.path):
-    log("ERROR: arma3 folder not found")
-    raise FileNotFoundError
+    if args.path_mkdir:
+        os.makedirs(args.path)
+    else:
+        log("ERROR: arma3 folder not found")
+        raise FileNotFoundError
 
 log(f'{"> steam user":16}{args.steam_user}')
 log(f'{"> Arma3 path":16}{args.path}')
@@ -60,15 +65,15 @@ for branch in args.branch:
 
 log(f'-----{"Download Mod":^50}-----')
 
-for id in args.mods:
-    log(f'{"-> mods":16}{id}')
-    log(f'{"<---":16}{cmd.workshop_download_item(str(args.appid), id)}')
+for mod_id in args.mods:
+    log(f'{"-> mods":16}{mod_id}')
+    log(f'{"<---":16}{cmd.workshop_download_item(str(args.appid), mod_id)}')
 
-for modlistfile in args.modlist:
+for mod_list_file in args.modlist:
     log(f'{"-> modlist":16}{modlistfile.name}')
-    for id in modlist.parse(modlistfile):
-        log(f'{"-> mods":16}{id}')
-        log(f'{"<---":16}{cmd.workshop_download_item(str(args.appid), id)}')
+    for mod_id in utils.modlist.parse(modlistfile):
+        log(f'{"-> mods":16}{mod_id}')
+        log(f'{"<---":16}{cmd.workshop_download_item(str(args.appid), mod_id)}')
 
 
 log(f'-----{"Process completed":^50}-----')
