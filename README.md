@@ -2,13 +2,13 @@
 
 Arma 3 Server Helper is a collection of scripts to simplify Arma 3 server
 management.
-For now this consists of an Arma 3 server install/update toolkit.
+For now this consists of an Arma 3 server install/update toolkit and mod list extractor.
 Further improvements or scripts may be added in the future, do not hesitate to
 contact me if you have any needs, even very specific ones.
 
 ## Minimal Example
 ```
-python main.py
+python downloader.py
 --path C:\Games\Arma3
 --steamcmd C:\steamcmd\steamcmd.exe
 --branch "233780 -beta creatordlc"
@@ -17,12 +17,18 @@ python main.py
 --steam-pass="password"
 ```
 
+```
+python presetModList.py
+--modlist A3Preset.html
+```
+
 ## Usage
 ```
-usage: main.py [-h] [--steam-user STEAM_USER] [--steam-pass STEAM_PASS]
-               [--path PATH] [--steamcmd STEAMCMD]
-               [--branch BRANCH [BRANCH ...]] [--appid APPID]
-               [--mods MODS [MODS ...]] [--modlist MODLIST [MODLIST ...]]
+usage: downloader.py [-h] [--steam-user STEAM_USER] [--steam-pass STEAM_PASS]
+                     [--path PATH] [--steamcmd STEAMCMD]
+                     [--branch BRANCH [BRANCH ...]] [--appid APPID]
+                     [--mods MODS [MODS ...]]
+                     [--modlist MODLIST [MODLIST ...]]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -30,7 +36,7 @@ optional arguments:
                         steam account username
   --steam-pass STEAM_PASS
                         steam account password
-  --path PATH           Arma3 server path, the folder must already exist
+  --path PATH           Arma3 server path
   --steamcmd STEAMCMD   path to steamcmd.exe
   --branch BRANCH [BRANCH ...]
                         Arma3 branch to install
