@@ -34,7 +34,7 @@ class SteamCMD:
         p = subprocess.run([self.steamcmd,
                             '+force_install_dir', self.install_dir,
                             '+login', self.username, self.password,
-                            '+workshop_download_item', app, mod,
+                            '+workshop_download_item', app, str(mod),
                             'validate', '+quit'],
                            shell=True, check=True)
         """
