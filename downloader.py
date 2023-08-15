@@ -86,15 +86,16 @@ for mod_id in args.mods:
 
 
 for mod_list_file in args.modlist:
+    mods = utils.modlist.parse(mod_list_file)
     log(f'{"-> modlist":16}{mod_list_file.name}')
-    for mod_id in utils.modlist.parse(mod_list_file):
+    for mod_id in mods:
         log(f'{"---> add mod":16}{mod_id}')
         cmd.workshop_download_item(str(args.appid), mod_id)
 
     log(f'{"--->":16}download with steamcmd')
     log(f'{"<---":16}{cmd.run()}')
 
-    for mod_id in utils.modlist.parse(mod_list_file):
+    for mod_id in mods:
         log(f'{"-> linking":16}{mod_id}')
         log(f'{"<---":16}{utils.symlink.link(args.path, str(args.appid), mod_id)}')
 
