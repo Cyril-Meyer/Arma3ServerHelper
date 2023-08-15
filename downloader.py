@@ -49,8 +49,8 @@ for branch in args.branch:
 log(f'{"> appid":16}{args.appid}')
 for mod in args.mods:
     log(f'{"-> mods":16}{mod}')
-for modlistfile in args.modlist:
-    log(f'{"-> modlist":16}{modlistfile.name}')
+for mod_list_file in args.modlist:
+    log(f'{"-> modlist":16}{mod_list_file.name}')
 
 cmd = SteamCMD(args.steamcmd, args.steam_user, args.steam_pass, args.path)
 
@@ -74,8 +74,8 @@ for mod_id in args.mods:
 
 
 for mod_list_file in args.modlist:
-    log(f'{"-> modlist":16}{modlistfile.name}')
-    for mod_id in utils.modlist.parse(modlistfile):
+    log(f'{"-> modlist":16}{mod_list_file.name}')
+    for mod_id in utils.modlist.parse(mod_list_file):
         log(f'{"-> mods":16}{mod_id}')
         log(f'{"<---":16}{cmd.workshop_download_item(str(args.appid), mod_id)}')
         log(f'{"-> linking":16}{mod_id}')
