@@ -39,7 +39,6 @@ optional arguments:
                         Workshop items id
   --modlist MODLIST [MODLIST ...]
                         Arma3 preset file (.html)
-
 ```
 
 ### Requirements
@@ -58,3 +57,7 @@ GitHub public documentations
 Interesting projects:
 * [py-steamcmd-wrapper](https://pypi.org/project/py-steamcmd-wrapper/)
 * [pysteamcmd](https://github.com/f0rkz/pysteamcmd)
+
+### Acknowledgement
+Thanks to [Drake-Feather](https://github.com/Drake-Feather) for providing me an
+Arma 3 key.
