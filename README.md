@@ -45,3 +45,16 @@ optional arguments:
 ### Requirements
 * Python 3.7 or newer
   (should work with 3.x, but never tested with older than 3.7)
+
+### Developer Documentation
+Valve documentation
+* [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)
+* [Steam command line options](https://developer.valvesoftware.com/wiki/Command_line_options)
+
+GitHub public documentations
+* [davispuh/steam_console_params.txt](https://gist.github.com/davispuh/6600880)
+* [dgibbs64/SteamCMD-Commands-List](https://github.com/dgibbs64/SteamCMD-Commands-List)
+
+Interesting projects:
+* [py-steamcmd-wrapper](https://pypi.org/project/py-steamcmd-wrapper/)
+* [pysteamcmd](https://github.com/f0rkz/pysteamcmd)
