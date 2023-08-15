@@ -1,5 +1,11 @@
 # Arma3ServerHelper
 
+Arma 3 Server Helper is a collection of scripts to simplify Arma 3 server
+management.
+For now this consists of an Arma 3 server install/update toolkit.
+Further improvements or scripts may be added in the future, do not hesitate to
+contact me if you have any needs, even very specific ones.
+
 ## Minimal Example
 ```
 python main.py
